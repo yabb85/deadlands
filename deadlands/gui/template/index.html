@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div class="logo">
+			<img src="{{ url_for('static', filename='img/deadlands.png') }}" alt="Deadlands" />
+		</div>
+		<div class="content">
+			generateur de personnage pour dealands
+			<ul>
+				<li><a href="/generator">Creation</a></li>
+				<li><a href="/test">Test</a></li>
+				<li><a href="/quit">Quitter</a></li>
+			</ul>
+		</div>
+		<link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css" />
+	</body>
+</html>

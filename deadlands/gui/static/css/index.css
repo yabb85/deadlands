@@ -1,0 +1,16 @@
+.content {
+	width: 100%;
+	text-align: center;
+}
+
+.content li {
+	display: block;
+	padding: 10px 0px 10px 0px;
+}
+
+.content a {
+	font-family: 'saloon';
+	font-size: xx-large;
+	color: #000000;
+	text-decoration: none;
+}

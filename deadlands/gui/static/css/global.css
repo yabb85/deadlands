@@ -1,0 +1,33 @@
+html {
+	background: url('../img/wood_back.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+.logo {
+	width: 100%;
+	height: 150px;
+	text-align: center;
+}
+
+.logo img {
+	height: 150px;
+}
+
+@font-face {
+    font-family: 'showboat';
+    src: url('../img/showboa_-webfont.woff2') format('woff2'),
+         url('../img/showboa_-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'saloon';
+    src: url('../img/saloon-webfont.woff2') format('woff2'),
+         url('../img/saloon-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

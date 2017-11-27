@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div class="logo">
+			<img src="{{ url_for('static', filename='img/deadlands.png') }}" alt="Deadlands" />
+		</div>
+		<div>
+			<span>Bienvenue dans le generateur de personnage pour le jeu Deadlands. Ils vous suffiras de suivre les indications des divers etapes afin de creer une fiche de personnage.
+			</span>
+		</div>
+		<div>
+			<span>ici vous allez entrer le nom de votre personnage.</span>
+			<label>nom :</label>
+			<input type="text"/>
+		</div>
+		<div>
+			Aprés avoir cliquer sur le bouton calculer vous aller voir dans les differentes cases les valeurs qui ont étés tiré au sort. Il faus en enlever 2.
+			<button>distribuer</button>
+		</div>
+		<div id="tapis">
+			carte:
+			<div class="line">
+				<div id="first_card">
+					<figure id="Heart_1" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="second_card">
+					<figure id="Heart_2" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="third_card">
+					<figure id="Heart_3" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="fourth_card">
+					<figure id="Heart_4" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="fifth_card">
+					<figure id="Heart_5" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="sixth_card">
+					<figure id="Heart_6" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+			</div>
+			<div class="line">
+				<div id="seventh_card">
+					<figure id="Heart_7" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="eighth_card">
+					<figure id="Heart_8" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="ninth_card">
+					<figure id="Heart_9" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="tenth_card">
+					<figure id="Heart_10" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="eleventh_card">
+					<figure id="Heart_11" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+				<div id="twelth_card">
+					<figure id="Heart_12" class="front"></figure>
+					<figure class="back"></figure>
+				</div>
+			</div>
+		</div>
+		<link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='css/generator.css') }}" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+	</body>
+</html>
+

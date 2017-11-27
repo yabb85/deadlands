@@ -1,0 +1,308 @@
+@keyframes flip_back {
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(-180deg);
+	}
+}
+
+@-webkit-keyframes flip_back {
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(-180deg);
+	}
+}
+
+@keyframes flip_front {
+	from {
+		transform: rotateY(-180deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes flip_front {
+	from {
+		transform: rotateY(-180deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+#tapis {
+	perspective: 1000px;
+	perspective-origin: top;
+}
+
+.line {
+	height: 300px;
+}
+
+figure {
+	width: 150px;
+	height: 210px;
+	border-radius: 7px;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
+}
+
+#first_card figure {
+	position: absolute;
+	left: 20px;
+}
+
+#second_card figure {
+	position: absolute;
+	left: 210px;
+	animation-delay: 0.5s;
+}
+
+#third_card figure {
+	position: absolute;
+	left: 400px;
+	animation-delay: 1s;
+}
+
+#fourth_card figure {
+	position: absolute;
+	left: 590px;
+	animation-delay: 1.5s;
+}
+
+#fifth_card figure {
+	position: absolute;
+	left: 780px;
+	animation-delay: 2s;
+}
+
+#sixth_card figure {
+	position: absolute;
+	left: 970px;
+	animation-delay: 2.5s;
+}
+
+#seventh_card figure {
+	position: absolute;
+	left: 20px;
+	animation-delay: 3s;
+}
+
+#eighth_card figure {
+	position: absolute;
+	left: 210px;
+	animation-delay: 3.5s;
+}
+
+#ninth_card figure {
+	position: absolute;
+	left: 400px;
+	animation-delay: 4s;
+}
+
+#tenth_card figure {
+	position: absolute;
+	left: 590px;
+	animation-delay: 4.5s;
+}
+
+#eleventh_card figure {
+	position: absolute;
+	left: 780px;
+	animation-delay: 5s;
+}
+
+#twelth_card figure {
+	position: absolute;
+	left: 960px;
+	animation-delay: 5.5s;
+}
+
+.front {
+	z-index: 50;
+	animation: flip_front 1s;
+	animation-fill-mode: forwards;
+}
+
+.back {
+	z-index: 100;
+	background: url('../img/card_back.jpg') no-repeat;
+	animation: flip_back 1s;
+	animation-fill-mode: forwards;
+}
+
+#Heart_1 {
+	background: url('../img/deck_1s.jpg') -300px 0px no-repeat;
+}
+
+#Heart_2 {
+	background: url('../img/deck_1s.jpg') 0px -210px no-repeat;
+}
+
+#Heart_3 {
+	background: url('../img/deck_1s.jpg') -150px -210px no-repeat;
+}
+
+#Heart_4 {
+	background: url('../img/deck_1s.jpg') -300px -210px no-repeat;
+}
+
+#Heart_5 {
+	background: url('../img/deck_1s.jpg') 0px -420px no-repeat;
+}
+
+#Heart_6 {
+	background: url('../img/deck_1s.jpg') -150px -420px no-repeat;
+}
+
+#Heart_7 {
+	background: url('../img/deck_1s.jpg') -300px -420px no-repeat;
+}
+
+#Heart_8 {
+	background: url('../img/deck_2s.jpg') 0px 0px no-repeat;
+}
+
+#Heart_9 {
+	background: url('../img/deck_2s.jpg') -150px 0px no-repeat;
+}
+
+#Heart_10 {
+	background: url('../img/deck_2s.jpg') -300px 0px no-repeat;
+}
+
+#Heart_11 {
+	background: url('../img/deck_2s.jpg') -0px -210px no-repeat;
+}
+
+#Heart_12 {
+	background: url('../img/deck_2s.jpg') -150px -210px no-repeat;
+}
+
+#Heart_13 {
+	background: url('../img/deck_2s.jpg') -300px -210px no-repeat;
+}
+
+#Spade_1 {
+	background: url('../img/deck_2s.jpg') 0px -420px no-repeat;
+}
+
+#Spade_2 {
+	background: url('../img/deck_2s.jpg') -150px -420px no-repeat;
+}
+#Spade_3 {
+	background: url('../img/deck_2s.jpg') -300px -420px no-repeat;
+}
+#Spade_4 {
+	background: url('../img/deck_3s.jpg') 0px 0px no-repeat;
+}
+#Spade_5 {
+	background: url('../img/deck_3s.jpg') -150px 0px no-repeat;
+}
+#Spade_6 {
+	background: url('../img/deck_3s.jpg') -300px 0px no-repeat;
+}
+#Spade_7 {
+	background: url('../img/deck_3s.jpg') 0px -210px no-repeat;
+}
+#Spade_8 {
+	background: url('../img/deck_3s.jpg') -150px -210px no-repeat;
+}
+#Spade_9 {
+	background: url('../img/deck_3s.jpg') -300px -210px no-repeat;
+}
+#Spade_10 {
+	background: url('../img/deck_3s.jpg') 0px -420px no-repeat;
+}
+#Spade_11 {
+	background: url('../img/deck_3s.jpg') -150px -420px no-repeat;
+}
+#Spade_12 {
+	background: url('../img/deck_3s.jpg') -300px -420px no-repeat;
+}
+#Spade_13 {
+	background: url('../img/deck_4s.jpg') 0px 0px no-repeat;
+}
+#Club_1 {
+	background: url('../img/deck_4s.jpg') -150px 0px no-repeat;
+}
+#Club_2 {
+	background: url('../img/deck_4s.jpg') -300px 0px no-repeat;
+}
+#Club_3 {
+	background: url('../img/deck_4s.jpg') 0px -210px no-repeat;
+}
+#Club_4 {
+	background: url('../img/deck_4s.jpg') -150px -210px no-repeat;
+}
+#Club_5 {
+	background: url('../img/deck_4s.jpg') -300px -210px no-repeat;
+}
+#Club_6 {
+	background: url('../img/deck_4s.jpg') 0px -420px no-repeat;
+}
+#Club_7 {
+	background: url('../img/deck_4s.jpg') -150px -420px no-repeat;
+}
+#Club_8 {
+	background: url('../img/deck_4s.jpg') -300px -420px no-repeat;
+}
+#Club_9 {
+	background: url('../img/deck_5s.jpg') 0px 0px no-repeat;
+}
+#Club_10 {
+	background: url('../img/deck_5s.jpg') -150px 0px no-repeat;
+}
+#Club_11 {
+	background: url('../img/deck_5s.jpg') -300px 0px no-repeat;
+}
+#Club_12 {
+	background: url('../img/deck_5s.jpg') 0px -210px no-repeat;
+}
+#Club_13 {
+	background: url('../img/deck_5s.jpg') -150px -210px no-repeat;
+}
+#Diamond_1 {
+	background: url('../img/deck_5s.jpg') -300px -210px no-repeat;
+}
+#Diamond_2 {
+	background: url('../img/deck_5s.jpg') 0px -420px no-repeat;
+}
+#Diamond_3 {
+	background: url('../img/deck_5s.jpg') -150px -420px no-repeat;
+}
+#Diamond_4 {
+	background: url('../img/deck_5s.jpg') -300px -420px no-repeat;
+}
+#Diamond_5 {
+	background: url('../img/deck_6s.jpg') 0px 0px no-repeat;
+}
+#Diamond_6 {
+	background: url('../img/deck_6s.jpg') -150px 0px no-repeat;
+}
+#Diamond_7 {
+	background: url('../img/deck_6s.jpg') -300px 0px no-repeat;
+}
+#Diamond_8 {
+	background: url('../img/deck_6s.jpg') 0px -210px no-repeat;
+}
+#Diamond_9 {
+	background: url('../img/deck_6s.jpg') -150px -210px no-repeat;
+}
+#Diamond_10 {
+	background: url('../img/deck_6s.jpg') -300px -210px no-repeat;
+}
+#Diamond_11 {
+	background: url('../img/deck_6s.jpg') 0px -420px no-repeat;
+}
+#Diamond_12 {
+	background: url('../img/deck_6s.jpg') -150px -420px no-repeat;
+}
+#Diamond_13 {
+	background: url('../img/deck_6s.jpg') -300px -420px no-repeat;
+}
