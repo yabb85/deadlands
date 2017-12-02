@@ -10,7 +10,7 @@ function doAjax(url, method, responseHandler, data)
 		alert("URL can not be null/blank");
 		return false;
 	}
-	var xmlHttpRequest = getHttpRequestObject();
+	var xmlHttpRequest = new XMLHttpRequest();
 
 	// If AJAX supported
 	if(xmlHttpRequest != false) {
@@ -30,7 +30,28 @@ function doAjax(url, method, responseHandler, data)
 	}
 }
 
-function close()
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function distribute()
 {
-	doAjax("/quit", "GET");
+	//doAjax("/distribute", "GET");
+	fetch("/distribute")
+		.then(function(response) {
+			return response.json();
+		})
+		.then(async function(data) {
+			console.log(data);
+			for (var i=0; i<data.length; i++) {
+				console.log(data[i]);
+				var color = data[i].color;
+				var value = data[i].value;
+				console.log(i);
+				var element = document.getElementById("card_" + i);
+				var font = document.getElementById("front_" + i).id = color + "_" + value;
+				element.classList.add("flipped");
+				await sleep(500);
+			}
+		});
 }

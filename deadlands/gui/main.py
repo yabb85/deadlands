@@ -40,7 +40,7 @@ def main():
         sleep(0.1)
 
     webview.create_window("It works, Jim!", 'http://127.0.0.1:5000',
-                          min_size=(1000, 760))
+                          min_size=(1200, 760))
 
 
 if __name__ == '__main__':

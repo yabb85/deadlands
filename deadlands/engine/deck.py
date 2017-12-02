@@ -41,6 +41,15 @@ class Card(object):
         print('{} {}'.format(self.value, self.color))
         print('{}{}'.format(self.coordination, self.dice))
 
+    def serialize(self):
+        """docstring for serialize"""
+        return {
+            'value': self.value,
+            'color': self.color,
+            'coordination': self.coordination,
+            'dice': self.dice
+        }
+
 
 class Deck(object):
     """
@@ -52,8 +61,8 @@ class Deck(object):
         for color in ['Spade', 'Club', 'Diamond', 'Heart']:
             for value in range(1, 14):
                 self.cards.append(Card(color, value))
-        self.cards.append(Card('black', 0))
-        self.cards.append(Card('red', 0))
+        self.cards.append(Card('Black', 0))
+        self.cards.append(Card('Red', 0))
 
     def show(self):
         """

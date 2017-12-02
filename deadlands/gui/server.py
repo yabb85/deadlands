@@ -4,6 +4,7 @@ from flask import render_template
 from os.path import dirname
 from os.path import join
 from os.path import realpath
+from ..engine.deck import Deck
 
 import webview
 import logging
@@ -16,10 +17,11 @@ TEMPLATE_DIR = join(CUR_DIR, 'template')
 server = Flask(__name__, static_folder=STATIC_DIR, template_folder=TEMPLATE_DIR)
 
 
-@server.route('/')
-def index():
+@server.route('/', defaults={'path': ''})
+@server.route('/<path:path>')
+def index(path):
     """docstring for index"""
-    return render_template('index.html')
+    return render_template('test.html')
 
 
 @server.route('/quit')
@@ -29,10 +31,21 @@ def quit():
     return jsonify({})
 
 
-@server.route('/generator')
+@server.route('/tirage')
 def gen_main():
     """docstring for gen_main"""
-    return render_template('generator.html')
+    return render_template('tirage.html')
+
+
+@server.route('/distribute')
+def distribute():
+    """docstring for distribute"""
+    result = []
+    deck = Deck()
+    deck.shuffle()
+    for i in range(0, 12):
+        result.append(deck.draw().serialize())
+    return jsonify(result)
 
 
 @server.route('/test')

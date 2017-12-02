@@ -1,139 +1,74 @@
-@keyframes flip_back {
+@keyframes flip {
 	from {
 		transform: rotateY(0deg);
 	}
 	to {
-		transform: rotateY(-180deg);
-	}
-}
-
-@-webkit-keyframes flip_back {
-	from {
-		transform: rotateY(0deg);
-	}
-	to {
-		transform: rotateY(-180deg);
-	}
-}
-
-@keyframes flip_front {
-	from {
-		transform: rotateY(-180deg);
-	}
-	to {
-		transform: rotate(0deg);
-	}
-}
-
-@-webkit-keyframes flip_front {
-	from {
-		transform: rotateY(-180deg);
-	}
-	to {
-		transform: rotate(0deg);
+		transform: rotateY(180deg);
 	}
 }
 
 #tapis {
 	perspective: 1000px;
 	perspective-origin: top;
+	width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .line {
-	height: 300px;
+	/*height: 300px;*/
+	overflow: auto;
 }
 
-figure {
+.pos_card {
+	width: 150px;
+	height: 240px;
+	float: left;
+	margin: 0 20px 0 20px;
+}
+
+.card {
 	width: 150px;
 	height: 210px;
-	border-radius: 7px;
-	backface-visibility: hidden;
+	position: absolute;
 	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+.card figure {
+	margin: 0;
+	border-radius: 7px;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
-#first_card figure {
-	position: absolute;
-	left: 20px;
+.display {
+	position: relative;
+	top: 210px;
 }
 
-#second_card figure {
-	position: absolute;
-	left: 210px;
-	animation-delay: 0.5s;
+.card .front {
+	transform: rotateY( 180deg );
 }
 
-#third_card figure {
-	position: absolute;
-	left: 400px;
-	animation-delay: 1s;
-}
-
-#fourth_card figure {
-	position: absolute;
-	left: 590px;
-	animation-delay: 1.5s;
-}
-
-#fifth_card figure {
-	position: absolute;
-	left: 780px;
-	animation-delay: 2s;
-}
-
-#sixth_card figure {
-	position: absolute;
-	left: 970px;
-	animation-delay: 2.5s;
-}
-
-#seventh_card figure {
-	position: absolute;
-	left: 20px;
-	animation-delay: 3s;
-}
-
-#eighth_card figure {
-	position: absolute;
-	left: 210px;
-	animation-delay: 3.5s;
-}
-
-#ninth_card figure {
-	position: absolute;
-	left: 400px;
-	animation-delay: 4s;
-}
-
-#tenth_card figure {
-	position: absolute;
-	left: 590px;
-	animation-delay: 4.5s;
-}
-
-#eleventh_card figure {
-	position: absolute;
-	left: 780px;
-	animation-delay: 5s;
-}
-
-#twelth_card figure {
-	position: absolute;
-	left: 960px;
-	animation-delay: 5.5s;
-}
-
-.front {
-	z-index: 50;
-	animation: flip_front 1s;
-	animation-fill-mode: forwards;
-}
-
-.back {
-	z-index: 100;
+.card .back {
 	background: url('../img/card_back.jpg') no-repeat;
-	animation: flip_back 1s;
-	animation-fill-mode: forwards;
+}
+
+.flipped {
+	transform: rotateY( 180deg );
+}
+
+#Red_0 {
+	background: url('../img/deck_1s.jpg') 0px 0px no-repeat;
+}
+
+#Black_0 {
+	background: url('../img/deck_1s.jpg') -150px 0px no-repeat;
 }
 
 #Heart_1 {

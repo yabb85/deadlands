@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div class="logo">
+			<img src="{{ url_for('static', filename='img/deadlands.png') }}" alt="Deadlands" />
+		</div>
+		<div class="container">
+			<div>
+				<span>Bienvenue dans le generateur de personnage pour le jeu Deadlands. Ils vous suffiras de suivre les indications des divers etapes afin de creer une fiche de personnage.
+				</span>
+			</div>
+			<div>
+				<span>ici vous allez entrer le nom de votre personnage.</span>
+				<label>nom :</label>
+				<input type="text"/>
+			</div>
+			<div>
+				Aprés avoir cliquer sur le bouton calculer vous aller voir dans les differentes cases les valeurs qui ont étés tiré au sort. Il faus en enlever 2.
+				<button onclick="distribute()">distribuer</button>
+			</div>
+			<div id="tapis">
+				carte:
+				<div class="line">
+					<section class="pos_card">
+						<div id="card_0" class="card">
+							<figure id="front_0" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+						<div class="display">
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_1" class="card">
+							<figure id="front_1" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_2" class="card">
+							<figure id="front_2" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_3" class="card">
+							<figure id="front_3" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_4" class="card">
+							<figure id="front_4" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_5" class="card">
+							<figure id="front_5" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+				</div>
+				<div class="line">
+					<section class="pos_card">
+						<div id="card_6" class="card">
+							<figure id="front_6" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_7" class="card">
+							<figure id="front_7" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_8" class="card">
+							<figure id="front_8" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_9" class="card">
+							<figure id="front_9" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_10" class="card">
+							<figure id="front_10" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+					<section class="pos_card">
+						<div id="card_11" class="card">
+							<figure id="front_11" class="front"></figure>
+							<figure class="back"></figure>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		<link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ url_for('static', filename='css/tirage.css') }}" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+	</body>
+</html>
