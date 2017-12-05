@@ -28,7 +28,7 @@ class Tapis extends React.Component {
 	}
 
 	createCard(card) {
-		return(<Card key={card.color+card.value} color={card.color} value={card.value} flipped={card.flipped}>{card.coordination}{card.dice}</Card>)
+		return(<Card key={card.color+card.value} color={card.color} value={card.value} flipped={card.flipped} selected={card.selected}>{card.coordination}{card.dice}</Card>)
 	}
 
 	render() {

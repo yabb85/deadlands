@@ -1,0 +1,87 @@
+.profil {
+	overflow: auto;
+	text-align: center;
+	width: 568px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profil fieldset {
+	border-radius: 10px;
+	float:left;
+	width: 220px;
+	margin: 20px;
+	padding: 10px;
+}
+
+.profil label {
+	display: block;
+	margin: 10px;
+	overflow: auto;
+}
+
+.profil label > span {
+	float: left;
+	width: 100px;
+}
+
+.profil label > input[type=text] {
+	width: 25%;
+	float: right;
+}
+
+.dices {
+	overflow: auto;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.dice {
+	width: 60px;
+	height: 50px;
+	line-height: 50px;
+	text-align: left;
+	margin-right: 20px;
+	float: left;
+}
+
+.d4 {
+	background: url('../img/d4.png') no-repeat;
+	background-size: 50px;
+	background-position: 10px;
+}
+
+.d6 {
+	background: url('../img/d6.png') no-repeat;
+	background-size: 50px;
+	background-position: 4px;
+}
+
+.d8 {
+	background: url('../img/d8.png') no-repeat;
+	background-size: 50px;
+	background-position: 8px;
+}
+
+.d10 {
+	background: url('../img/d10.png') no-repeat;
+	background-size: 50px;
+	background-position: 10px;
+}
+
+.d12 {
+	background: url('../img/d12.png') no-repeat;
+	background-size: 50px;
+	background-position: 8px;
+}
+
+#mouse_plop {
+	position:absolute;
+	visibility:visible;
+	top:-50px;
+	font-size:10pt;
+	font-family:Verdana;
+	font-weight:bold;
+	color:#000000;
+}

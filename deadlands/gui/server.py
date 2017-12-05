@@ -21,7 +21,7 @@ server = Flask(__name__, static_folder=STATIC_DIR, template_folder=TEMPLATE_DIR)
 @server.route('/<path:path>')
 def index(path):
     """docstring for index"""
-    return render_template('test.html')
+    return render_template('index.html')
 
 
 @server.route('/quit')
@@ -31,12 +31,6 @@ def quit():
     return jsonify({})
 
 
-@server.route('/tirage')
-def gen_main():
-    """docstring for gen_main"""
-    return render_template('tirage.html')
-
-
 @server.route('/distribute')
 def distribute():
     """docstring for distribute"""
@@ -44,7 +38,11 @@ def distribute():
     deck = Deck()
     deck.shuffle()
     for i in range(0, 12):
-        result.append(deck.draw().serialize())
+        card = deck.draw()
+        if 'Red' in card.color or 'Black' in card.color:
+            new_card = deck.draw()
+            card.coordination = new_card.coordination
+        result.append(card.serialize())
     return jsonify(result)
 
 

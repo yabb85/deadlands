@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './Menu'
 import Tirage from './Tirage'
-import Carac from './Carac'
+import Caracteristics from './Carac'
 
 class App extends React.Component {
 	render() {
@@ -13,8 +13,8 @@ class App extends React.Component {
 						<img src="static/img/deadlands.png" alt="Deadlands" />
 					</div>
 					<Route exact path='/' component={Menu} />
-					<Route path='/test' component={Tirage} />
-					<Route path='/caracteristics' component={Carac} />
+					<Route path='/tirage' component={Tirage} />
+					<Route path='/caracteristics' component={Caracteristics} />
 				</div>
 			</BrowserRouter>
 		);
