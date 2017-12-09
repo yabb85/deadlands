@@ -1,34 +1,17 @@
 import React from 'react'
 import Card from './Card'
-import Actions from '../actions/Action'
-import Store from '../stores/Store'
-
-function getCardsState() {
-	return Store.getCards()
-}
+import { connect } from 'react-redux'
+import * as actions from '../redux/action'
 
 class Tapis extends React.Component {
 	constructor(props) {
 		super(props)
-		this._onChange = this._onChange.bind(this)
-		this.state = getCardsState()
-	}
-
-	componentWillMount() {
-		Store.removeChangeListener(this._onChange)
-	}
-
-	componentDidMount() {
-		Store.addChangeListener(this._onChange)
-		this._onInit()
-	}
-
-	componentWillUnmount() {
-		Store.removeChangeListener(this._onChange)
+		this.createCard = this.createCard.bind(this)
+		this._onDistribute = this._onDistribute.bind(this)
 	}
 
 	createCard(card) {
-		return(<Card key={card.color+card.value} color={card.color} value={card.value} flipped={card.flipped} selected={card.selected}>{card.coordination}{card.dice}</Card>)
+		return(<Card key={card.get('color')+card.get('figure')} card={card} flip={this.props.toggleCard}>{card.get('coordination')}{card.get('dice')}</Card>)
 	}
 
 	render() {
@@ -40,24 +23,40 @@ class Tapis extends React.Component {
 				</div>
 				carte:
 				<div className="line">
-					{this.state.cards.map(this.createCard)}
+					{this.props.cards.map(this.createCard)}
 					<div className="spacer"></div>
 				</div>
 			</div>
 		)
 	}
 
-	_onInit() {
-		Actions.resetDistribution()
-	}
-
 	_onDistribute() {
-		Actions.distributeCards()
-	}
-
-	_onChange() {
-		this.setState(getCardsState())
+		this.props.resetDistribution()
+		this.props.distributeCards()
 	}
 }
 
-export default Tapis
+export default connect(
+	function mapStateToProps(state) {
+		return {cards: state.cards}
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			distributeCards: () => {
+				fetch("/distribute")
+					.then(function(response) {
+						return response.json()
+					})
+					.then(async function(data) {
+						dispatch(actions.distributeCards(data))
+					});
+			},
+			resetDistribution: () => {
+				dispatch(actions.resetDistribution())
+			},
+			toggleCard: (item) => {
+				dispatch(actions.flip(item))
+			}
+		}
+	}
+)(Tapis)

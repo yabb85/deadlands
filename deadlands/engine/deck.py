@@ -44,7 +44,7 @@ class Card(object):
     def serialize(self):
         """docstring for serialize"""
         return {
-            'value': self.value,
+            'figure': self.value,
             'color': self.color,
             'coordination': self.coordination,
             'dice': self.dice

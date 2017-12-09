@@ -1,31 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Tapis from './Tapis'
-import Actions from '../actions/Action'
-import Store from '../stores/Store'
-
-function getProfilState() {
-	return Store.getProfil()
-}
+import { connect } from 'react-redux'
+import * as actions from '../redux/action'
 
 class Tirage extends React.Component {
-	constructor(props) {
-		super(props)
-		this._onChange = this._onChange.bind(this)
-		this.state = getProfilState()
-	}
-
-	componentWillMount() {
-		Store.removeChangeListener(this._onChange)
-	}
-
-	componentDidMount() {
-		Store.addChangeListener(this._onChange)
-	}
-
-	componentWillUnmount() {
-		Store.removeChangeListener(this._onChange)
-	}
 
 	render() {
 		return(
@@ -37,7 +16,7 @@ class Tirage extends React.Component {
 				<div>
 					<span>ici vous allez entrer le nom de votre personnage.</span>
 					<label>nom :</label>
-					<input type="text" value={this.state.name} onChange={this._onEditName}/>
+					<input type="text" value={this.props.profil.get('name')} onChange={this.props.setName} />
 				</div>
 				<Tapis />
 				<div>
@@ -47,18 +26,18 @@ class Tirage extends React.Component {
 			</div>
 		)
 	}
-
-	_onChange() {
-		this.setState(getProfilState())
-	}
-
-	_onValidate() {
-		Actions.validateDistribution()
-	}
-
-	_onEditName(event) {
-		Actions.setName(event.target.value)
-	}
 }
 
-export default Tirage
+
+export default connect(
+	function mapStateToProps(state) {
+		return {profil: state.profil}
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			setName: (name) => {
+				dispatch(actions.setName(name.target.value))
+			}
+		}
+	}
+)(Tirage)

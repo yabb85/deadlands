@@ -1,0 +1,68 @@
+.panel {
+	overflow: auto;
+}
+
+.menu {
+	float: left;
+	width: 25%;
+}
+
+.menu section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+.menu input {
+	display: none;
+}
+
+.menu label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+.menu label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+.menu label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.menu input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+
+#handi_tab:checked ~ #handicaps,
+#asset_tab:checked ~ #assets {
+  display: block;
+}
+
+.content {
+	float: left;
+	width: 75%;
+}
+
+.choices {
+	float: right;
+}
+.choice {
+	float: left;
+}
+
+#definition {
+	border: 1px solid #aaa;
+	padding: 20px;
+}

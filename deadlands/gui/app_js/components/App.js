@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './Menu'
 import Tirage from './Tirage'
-import Caracteristics from './Carac'
+import Caracteristics from './Caracteristics'
+import Assets from './Assets'
 
 class App extends React.Component {
 	render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
 					<Route exact path='/' component={Menu} />
 					<Route path='/tirage' component={Tirage} />
 					<Route path='/caracteristics' component={Caracteristics} />
+					<Route path='/assets' component={Assets} />
 				</div>
 			</BrowserRouter>
 		);
