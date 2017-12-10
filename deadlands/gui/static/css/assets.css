@@ -1,16 +1,22 @@
+.error {
+	color: #f55;
+}
+
 .panel {
-	overflow: auto;
+	display: flex;
+	align-items: stretch;
 }
 
 .menu {
-	float: left;
-	width: 25%;
+	width: 280px;
 }
 
 .menu section {
-  display: none;
-  padding: 20px 0 0;
-  border-top: 1px solid #ddd;
+	display: none;
+	padding: 20px 0 20px 0;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 
 .menu input {
@@ -18,41 +24,46 @@
 }
 
 .menu label {
-  display: inline-block;
-  margin: 0 0 -1px;
-  padding: 15px 25px;
-  font-weight: 600;
-  text-align: center;
-  color: #bbb;
-  border: 1px solid transparent;
+	display: inline-block;
+	margin: 0 0 -1px;
+	padding: 15px 25px;
+	font-weight: 600;
+	text-align: center;
+	color: #bbb;
+	border: 1px solid transparent;
 }
 
 .menu label:before {
-  font-family: fontawesome;
-  font-weight: normal;
-  margin-right: 10px;
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;
 }
 
 .menu label:hover {
-  color: #888;
-  cursor: pointer;
+	color: #888;
+	cursor: pointer;
 }
 
 .menu input:checked + label {
-  color: #555;
-  border: 1px solid #ddd;
-  border-top: 2px solid orange;
-  border-bottom: 1px solid #fff;
+	color: #555;
+	border: 1px solid #ddd;
+	border-top: 2px solid orange;
+	border-bottom: 1px solid #fff;
 }
 
 #handi_tab:checked ~ #handicaps,
 #asset_tab:checked ~ #assets {
-  display: block;
+	display: block;
 }
 
 .content {
-	float: left;
-	width: 75%;
+	width: 590px;
+	margin-top: 51px;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding-top: 20px;
+	padding-right: 20px;
 }
 
 .choices {
@@ -65,4 +76,27 @@
 #definition {
 	border: 1px solid #aaa;
 	padding: 20px;
+}
+
+.profil {
+	width: 245px;
+	margin: 17px 10px 10px 10px;
+	text-align: left;
+}
+
+.profil #name {
+	font-weight: 600;
+	text-align: center;
+}
+
+.title {
+	display: flex;
+}
+
+.title hr {
+	flex: 1;
+	border: none;
+	border-bottom: 1px dashed #777;
+	margin-left: 5px;
+	margin-right: 5px;
 }

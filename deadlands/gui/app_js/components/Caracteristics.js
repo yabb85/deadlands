@@ -176,7 +176,10 @@ class Caracteristics extends React.Component {
 
 export default connect(
 	function mapStateToProps(state) {
-		return state
+		return {
+			profil: state.profil,
+			cards: state.cards
+		}
 	},
 	function mapDispatchToProps(dispatch) {
 		return {

@@ -4,6 +4,7 @@ import Menu from './Menu'
 import Tirage from './Tirage'
 import Caracteristics from './Caracteristics'
 import Assets from './Assets'
+import Competences from './Competences'
 
 class App extends React.Component {
 	render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
 					<Route path='/tirage' component={Tirage} />
 					<Route path='/caracteristics' component={Caracteristics} />
 					<Route path='/assets' component={Assets} />
+					<Route path='/competences' component={Competences} />
 				</div>
 			</BrowserRouter>
 		);
