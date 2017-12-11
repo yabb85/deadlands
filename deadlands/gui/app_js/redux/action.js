@@ -58,3 +58,11 @@ export function setAsset(name, value, type) {
 		asset_type: type
 	}
 }
+
+export function setCompetence(name, value) {
+	return {
+		type: 'SET_COMPETENCE',
+		name: name,
+		value: value
+	}
+}

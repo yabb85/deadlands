@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../redux/action'
-import Immutable, { Map } from 'immutable'
 import { Link } from 'react-router-dom'
 
 class InputCaracteristic extends React.Component {

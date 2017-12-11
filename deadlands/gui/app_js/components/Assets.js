@@ -106,7 +106,7 @@ class Assets extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			selected_option: Map(),
+			selectedOption: Map(),
 			selected_tab: 'handi_tab',
 			counter: 0,
 			counter_assets: 0,
@@ -142,7 +142,7 @@ class Assets extends React.Component {
 	createOption(item, filter) {
 		if (item.get('type') == filter) {
 			return(
-				<option key={item.get('name')} value={item.get('name')} selected={item == this.state.selected_option}>{item.get('name')}</option>
+				<option key={item.get('name')} value={item.get('name')} selected={item == this.state.selectedOption}>{item.get('name')}</option>
 			)
 		}
 	}
@@ -175,11 +175,11 @@ class Assets extends React.Component {
 
 					<div className='content'>
 						<div id='definition'>
-							{this.state.selected_option.get('definition')}
+							{this.state.selectedOption.get('definition')}
 						</div>
 						<div>
 							valeur disponible:
-							<InputChoiceContainer item={this.state.selected_option}/>
+							<InputChoiceContainer item={this.state.selectedOption}/>
 						</div>
 					</div>
 					<div className='profil'>
@@ -187,7 +187,7 @@ class Assets extends React.Component {
 							{this.props.profil.get('name')}
 						</div>
 						<div>
-							<div className='title'>
+							<div className='assets_result'>
 								<div>Atouts:</div>
 								<hr />
 								<div>{this.state.counter_assets}</div>
@@ -195,7 +195,7 @@ class Assets extends React.Component {
 							<ProfilAssetsContainer filter='asset'/>
 						</div>
 						<div>
-							<div className='title'>
+							<div className='assets_result'>
 								<div>Handicaps:</div>
 								<hr />
 								<div>{this.state.counter_handicaps}</div>
@@ -217,7 +217,7 @@ class Assets extends React.Component {
 
 	_onSelectTab(evt) {
 		var state = {
-			selected_option: this.state.selected_option,
+			selectedOption: this.state.selectedOption,
 			selected_tab: evt.target.id
 		}
 		this.setState(state)
@@ -227,7 +227,7 @@ class Assets extends React.Component {
 		this.props.assets.map(item => {
 			if (item.get('name') == evt.target.value) {
 				var state = {
-					selected_option: item,
+					selectedOption: item,
 					selected_tab: this.state.selected_tab
 				}
 				this.setState(state)

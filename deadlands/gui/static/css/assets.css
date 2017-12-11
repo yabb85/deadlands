@@ -89,11 +89,11 @@
 	text-align: center;
 }
 
-.title {
+.assets_result {
 	display: flex;
 }
 
-.title hr {
+.assets_result hr {
 	flex: 1;
 	border: none;
 	border-bottom: 1px dashed #777;
