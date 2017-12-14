@@ -59,10 +59,18 @@ export function setAsset(name, value, type) {
 	}
 }
 
-export function setCompetence(name, value) {
+export function validAsset(competencePoints) {
+	return {
+		type: 'VALID_ASSET',
+		points: competencePoints
+	}
+}
+
+export function setCompetence(name, value, modif) {
 	return {
 		type: 'SET_COMPETENCE',
 		name: name,
-		value: value
+		value: value,
+		modif: modif
 	}
 }

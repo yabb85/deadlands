@@ -155,11 +155,11 @@ class Caracteristics extends React.Component {
 			}
 		} else {
 			if (evt.card) {
-				this.props.setCaracteristic(evt.target.name, null)
 				var state = {
 					card: evt.card
 				}
 				this.setState(state)
+				this.props.setCaracteristic(evt.target.name, null)
 			}
 		}
 	}

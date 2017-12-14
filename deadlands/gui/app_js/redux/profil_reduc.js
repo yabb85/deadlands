@@ -27,6 +27,8 @@ export default function profil_reduc(state = profil, action) {
 				})
 			}
 			return state.set('assets', newAssets)
+		case 'VALID_ASSET':
+			return state.set('points', action.points)
 		case 'SET_COMPETENCE':
 			var newCompetences = state.get('competences').map(item => {
 				if (item.get('name') == action.name) {
@@ -38,7 +40,8 @@ export default function profil_reduc(state = profil, action) {
 			if(newCompetences.equals(state.get('competences'))) {
 				newCompetences = newCompetences.push(Map({name: action.name, value: action.value}))
 			}
-			return state.set('competences', newCompetences)
+			var newPoints = state.set('points', state.get('points') + action.modif)
+			return newPoints.set('competences', newCompetences)
 		default:
 			return state
 	}

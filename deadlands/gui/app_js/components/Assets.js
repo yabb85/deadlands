@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../redux/action'
 import Immutable, { Map } from 'immutable'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class InputChoice extends React.Component {
 	constructor(props) {
@@ -109,8 +109,8 @@ class Assets extends React.Component {
 			selectedOption: Map(),
 			selected_tab: 'handi_tab',
 			counter: 0,
-			counter_assets: 0,
-			counter_handicaps: 0,
+			counterAssets: 0,
+			counterHandicaps: 0,
 			error: ''
 		}
 		this._onSelectOption = this._onSelectOption.bind(this)
@@ -119,23 +119,23 @@ class Assets extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		let state = this.state
-		state.counter_assets = 0
-		state.counter_handicaps = 0
+		state.counterAssets = 0
+		state.counterHandicaps = 0
 		nextProps.profil.get('assets').map(item => {
 			if (item.get('type') == 'handicap') {
-				state.counter_handicaps += parseInt(item.get('value'))
+				state.counterHandicaps += parseInt(item.get('value'))
 			} else {
-				state.counter_assets += parseInt(item.get('value'))
+				state.counterAssets += parseInt(item.get('value'))
 			}
 		})
 		state.error = ''
-		if (state.counter_assets > 10) {
+		if (state.counterAssets > 10) {
 			state.error = "Trop d'atouts choisi!"
 		}
-		if (state.counter_handicaps > 10) {
+		if (state.counterHandicaps > 10) {
 			state.error = "Trop d'handicaps choisi!"
 		}
-		state.counter = state.counter_handicaps - state.counter_assets
+		state.counter = state.counterHandicaps - state.counterAssets
 		this.setState(state)
 	}
 
@@ -147,8 +147,10 @@ class Assets extends React.Component {
 		}
 	}
 
-
 	render() {
+		if (this.props.profil.get('points') && this.props.profil.get('points') > 0) {
+			return(<Redirect to="/competences"/>)
+		}
 		return(
 			<div className='container'>
 				<div className="error">
@@ -190,7 +192,7 @@ class Assets extends React.Component {
 							<div className='assets_result'>
 								<div>Atouts:</div>
 								<hr />
-								<div>{this.state.counter_assets}</div>
+								<div>{this.state.counterAssets}</div>
 							</div>
 							<ProfilAssetsContainer filter='asset'/>
 						</div>
@@ -198,7 +200,7 @@ class Assets extends React.Component {
 							<div className='assets_result'>
 								<div>Handicaps:</div>
 								<hr />
-								<div>{this.state.counter_handicaps}</div>
+								<div>{this.state.counterHandicaps}</div>
 							</div>
 							<ProfilAssetsContainer filter='handicap'/>
 						</div>
@@ -209,7 +211,7 @@ class Assets extends React.Component {
 						</div>
 					</div>
 				</div>
-			<Link to="/competences">Valider</Link>
+				<button onClick={(evt) => this._onValidate(evt)}>Valider</button>
 				<link href="/static/css/assets.css" rel="stylesheet" type="text/css" />
 			</div>
 		)
@@ -234,6 +236,16 @@ class Assets extends React.Component {
 			}
 		})
 	}
+
+	_onValidate(evt) {
+		if (this.state.counterAssets < 11 && this.state.counterHandicaps < 11) {
+			let astuce = parseInt(this.props.profil.get('astuce').get('dice').replace('d', ''))
+			let perception = parseInt(this.props.profil.get('perception').get('dice').replace('d', ''))
+			let connaissance = parseInt(this.props.profil.get('connaissance').get('dice').replace('d', ''))
+			var competencePoints = astuce + perception + connaissance + this.state.counterHandicaps - this.state.counterAssets
+			this.props.validate(competencePoints)
+		}
+	}
 }
 
 export default connect(
@@ -244,6 +256,10 @@ export default connect(
 		}
 	},
 	function mapDispatchToProps(dispatch) {
-		return {}
+		return {
+			validate: (competencePoints) => {
+				dispatch(actions.validAsset(competencePoints))
+			}
+		}
 	}
 )(Assets)

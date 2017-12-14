@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { competences } from '../redux/fixtures'
 import * as actions from '../redux/action'
+import { push } from 'react-router-redux'
 
 class Competence extends React.Component {
 	constructor(props) {
@@ -44,16 +45,19 @@ class Competence extends React.Component {
 	}
 
 	_onAdd() {
+		if (this.props.profil.get('points') <= 0) {
+			return
+		}
 		if (!this.state.profil_competence) {
-			this.props.setCompetence(this.props.name, 1)
+			this.props.setCompetence(this.props.name, 1, -1)
 		}else if (this.state.profil_competence.get('value') < 5) {
-			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') + 1)
+			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') + 1, -1)
 		}
 	}
 
 	_onSub() {
 		if (this.state.profil_competence && this.state.profil_competence.get('value') > this.state.competence.get('min')) {
-			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') - 1)
+			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') - 1, 1)
 		}
 	}
 }
@@ -66,8 +70,8 @@ var CompetenceContainer = connect(
 	},
 	function mapDispatchToProps(dispatch) {
 		return {
-			setCompetence: (name, value) => {
-				dispatch(actions.setCompetence(name, value))
+			setCompetence: (name, value, modif) => {
+				dispatch(actions.setCompetence(name, value, modif))
 			}
 		}
 	}
@@ -77,6 +81,9 @@ class Competences extends React.Component {
 	render() {
 		return(
 			<div className="container">
+				<div>
+					Points restants: {this.props.profil.get('points')}
+				</div>
 				<div className='competences'>
 					<div className='competence'>
 						<h1>Perception</h1>
@@ -168,9 +175,15 @@ class Competences extends React.Component {
 						<CompetenceContainer name='autre_vig'/>
 					</div>
 				</div>
+ 				<button onClick={(evt) => this._onValidate(evt)}>Valider</button>
 				<link href="/static/css/competences.css" rel="stylesheet" type="text/css" />
 			</div>
 		)
+	}
+
+	_onValidate(evt) {
+		console.log(evt.target)
+		this.props.validate()
 	}
 }
 
@@ -178,6 +191,13 @@ export default connect(
 	function mapStateToProps(state) {
 		return {
 			profil: state.profil
+		}
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			validate: () => {
+				dispatch(push("/"))
+			}
 		}
 	}
 )(Competences)

@@ -1,0 +1,32 @@
+.competences {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.competence {
+	width: 320px;
+	border: 1px solid #ddd;
+	margin: 15px;
+	padding: 10px;
+}
+
+.competence h1 {
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.competence label{
+	display: block;
+	width: 190px;
+	float: left;
+	text-align: left;
+}
+
+.competence input {
+	width: 20px;
+}
+
+.competence button {
+	width: 20px;
+	padding: 0px;
+}
