@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { competences } from '../redux/fixtures'
 import * as actions from '../redux/action'
-import { push } from 'react-router-redux'
+import { Redirect } from 'react-router-dom'
 
 class Competence extends React.Component {
 	constructor(props) {
@@ -78,9 +78,23 @@ var CompetenceContainer = connect(
 )(Competence)
 
 class Competences extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			validate: false,
+			error: ''
+		}
+	}
+
 	render() {
+		if (this.state.validate) {
+			return(<Redirect push to="/"/>)
+		}
 		return(
 			<div className="container">
+				<div>
+					{this.state.error}
+				</div>
 				<div>
 					Points restants: {this.props.profil.get('points')}
 				</div>
@@ -182,8 +196,11 @@ class Competences extends React.Component {
 	}
 
 	_onValidate(evt) {
-		console.log(evt.target)
-		this.props.validate()
+		if (this.props.profil.points == 0) {
+			this.setState({validate: true, error: ''})
+		} else {
+			this.setState({validate: false, error: "Vous n'avez pas attribué tous vos points"})
+		}
 	}
 }
 
@@ -195,9 +212,6 @@ export default connect(
 	},
 	function mapDispatchToProps(dispatch) {
 		return {
-			validate: () => {
-				dispatch(push("/"))
-			}
 		}
 	}
 )(Competences)

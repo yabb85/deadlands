@@ -149,7 +149,7 @@ class Assets extends React.Component {
 
 	render() {
 		if (this.props.profil.get('points') && this.props.profil.get('points') > 0) {
-			return(<Redirect to="/competences"/>)
+			return(<Redirect push to="/competences"/>)
 		}
 		return(
 			<div className='container'>
