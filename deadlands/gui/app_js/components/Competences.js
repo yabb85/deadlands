@@ -4,6 +4,28 @@ import { competences } from '../redux/fixtures'
 import * as actions from '../redux/action'
 import { Redirect } from 'react-router-dom'
 
+class Speciality extends React.Component {
+	createSelect(item) {
+		return(<option key={item}>{item}</option>)
+	}
+	render() {
+		console.log(this.props)
+		if (this.props.spe && this.props.spe.length > 0) {
+			return(
+				<select>
+					{this.props.spe.map(this.createSelect)}
+				</select>
+			)
+		} else if (this.props.spe && this.props.spe.length == 0) {
+			return(
+				<input type="text"/>
+			)
+		} else {
+			return(null)
+		}
+	}
+}
+
 class Competence extends React.Component {
 	constructor(props) {
 		super(props)
@@ -30,14 +52,18 @@ class Competence extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.name)
 		let value = 0;
 		if (this.state.profil_competence) {
 			value = this.state.profil_competence.get('value')
 		}
 		return(
-			<div>
+			<div className='competence'>
 				<label htmlFor={this.props.name}>{this.state.competence.get('text')}</label>
-				<input type='text' id={this.props.name} value={value} readOnly/>
+				<div className='speciality'>
+					<Speciality spe={this.state.competence.get('spe')}/>
+				</div>
+				<input type='text' id={this.props.name} className='dice' value={value} readOnly/>
 				<button onClick={() => this._onAdd()}>+</button>
 				<button onClick={() => this._onSub()}>-</button>
 			</div>
@@ -98,8 +124,8 @@ class Competences extends React.Component {
 				<div>
 					Points restants: {this.props.profil.get('points')}
 				</div>
-				<div className='competences'>
-					<div className='competence'>
+				<div className='traits'>
+					<div className='competences'>
 						<h1>Perception</h1>
 						<CompetenceContainer name='artillerie'/>
 						<CompetenceContainer name='arts'/>
@@ -108,7 +134,7 @@ class Competences extends React.Component {
 						<CompetenceContainer name='scruter'/>
 						<CompetenceContainer name='autre_per'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Connaissance</h1>
 						<CompetenceContainer name='carriere'/>
 						<CompetenceContainer name='territoires'/>
@@ -123,7 +149,7 @@ class Competences extends React.Component {
 						<CompetenceContainer name='universalis'/>
 						<CompetenceContainer name='autre_con'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Charisme</h1>
 						<CompetenceContainer name='autorite'/>
 						<CompetenceContainer name='dressage'/>
@@ -133,7 +159,7 @@ class Competences extends React.Component {
 						<CompetenceContainer name='spectacle'/>
 						<CompetenceContainer name='autre_cha'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Astuce</h1>
 						<CompetenceContainer name='bidouiller'/>
 						<CompetenceContainer name='bluff'/>
@@ -144,13 +170,13 @@ class Competences extends React.Component {
 						<CompetenceContainer name='survie'/>
 						<CompetenceContainer name='autre_ast'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Ame</h1>
 						<CompetenceContainer name='foi'/>
 						<CompetenceContainer name='tripes'/>
 						<CompetenceContainer name='autre_ame'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Dexterite</h1>
 						<CompetenceContainer name='arc'/>
 						<CompetenceContainer name='crocheter'/>
@@ -163,7 +189,7 @@ class Competences extends React.Component {
 						<CompetenceContainer name='ventiler'/>
 						<CompetenceContainer name='autre_dex'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Agilite</h1>
 						<CompetenceContainer name='attelage'/>
 						<CompetenceContainer name='combat'/>
@@ -175,16 +201,16 @@ class Competences extends React.Component {
 						<CompetenceContainer name='nager'/>
 						<CompetenceContainer name='autre_agi'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Force</h1>
 						<CompetenceContainer name='autre_for'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Rapidite</h1>
 						<CompetenceContainer name='degainer'/>
 						<CompetenceContainer name='autre_rap'/>
 					</div>
-					<div className='competence'>
+					<div className='competences'>
 						<h1>Vigueur</h1>
 						<CompetenceContainer name='autre_vig'/>
 					</div>
