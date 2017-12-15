@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { competences } from '../redux/fixtures'
+import { competencesDefinition } from '../redux/fixtures'
 import * as actions from '../redux/action'
 import { Redirect } from 'react-router-dom'
 
@@ -8,17 +8,18 @@ class Speciality extends React.Component {
 	createSelect(item) {
 		return(<option key={item}>{item}</option>)
 	}
+
 	render() {
-		console.log(this.props)
 		if (this.props.spe && this.props.spe.length > 0) {
 			return(
-				<select>
+				<select value={this.props.default} onChange={this.props.onChange}>
+					<option value=''></option>
 					{this.props.spe.map(this.createSelect)}
 				</select>
 			)
 		} else if (this.props.spe && this.props.spe.length == 0) {
 			return(
-				<input type="text"/>
+				<input type="text" value={this.props.default} onChange={this.props.onChange}/>
 			)
 		} else {
 			return(null)
@@ -30,40 +31,46 @@ class Competence extends React.Component {
 	constructor(props) {
 		super(props)
 		function findCompetence(item) {
-			return item.get('name') == props.name
+			return item.get('name') == props.item.get('name')
 		}
-		let competence = competences.find(item => findCompetence(item))
 		let profil_competence = this.props.profil.get('competences').find(item => findCompetence(item))
+		let speciality = ''
+		if (profil_competence) {
+			speciality = profil_competence.get('speciality')
+		}
 		this.state = {
-			competence: competence,
-			profil_competence: profil_competence
+			profil_competence: profil_competence,
+			speciality: speciality
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		function findCompetence(item) {
-			return item.get('name') == nextProps.name
+			return item.get('name') == nextProps.item.get('name')
 		}
 		let profil_competence = nextProps.profil.get('competences').find(item => findCompetence(item))
+		let speciality = ''
+		if (profil_competence) {
+			speciality = profil_competence.get('speciality')
+		}
 		this.setState({
-			competence: this.state.competence,
-			profil_competence: profil_competence
+			profil_competence: profil_competence,
+			speciality: speciality
 		})
 	}
 
 	render() {
-		console.log(this.props.name)
 		let value = 0;
 		if (this.state.profil_competence) {
 			value = this.state.profil_competence.get('value')
 		}
 		return(
 			<div className='competence'>
-				<label htmlFor={this.props.name}>{this.state.competence.get('text')}</label>
+				<label htmlFor={this.props.item.get('name')}>{this.props.item.get('text')}</label>
 				<div className='speciality'>
-					<Speciality spe={this.state.competence.get('spe')}/>
+					<Speciality spe={this.props.item.get('spe')} default={this.state.speciality} onChange={(evt) => this._onChange(evt)}/>
 				</div>
-				<input type='text' id={this.props.name} className='dice' value={value} readOnly/>
+				<input type='text' id={this.props.item.get('name')} className='dice' value={value} readOnly/>
 				<button onClick={() => this._onAdd()}>+</button>
 				<button onClick={() => this._onSub()}>-</button>
 			</div>
@@ -71,19 +78,18 @@ class Competence extends React.Component {
 	}
 
 	_onAdd() {
-		if (this.props.profil.get('points') <= 0) {
-			return
-		}
-		if (!this.state.profil_competence) {
-			this.props.setCompetence(this.props.name, 1, -1)
-		}else if (this.state.profil_competence.get('value') < 5) {
-			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') + 1, -1)
-		}
+		this.props.upCompetence(this.props.item, this.state.speciality)
 	}
 
 	_onSub() {
-		if (this.state.profil_competence && this.state.profil_competence.get('value') > this.state.competence.get('min')) {
-			this.props.setCompetence(this.props.name, this.state.profil_competence.get('value') - 1, 1)
+		this.props.downCompetence(this.props.item, this.state.speciality)
+	}
+
+	_onChange(evt) {
+		if (this.state.profil_competence && this.state.profil_competence.get('value') > 0) {
+			this.props.updateSpeciality(this.props.item, evt.target.value)
+		} else {
+			this.props.upCompetence(this.props.item, evt.target.value)
 		}
 	}
 }
@@ -96,12 +102,35 @@ var CompetenceContainer = connect(
 	},
 	function mapDispatchToProps(dispatch) {
 		return {
-			setCompetence: (name, value, modif) => {
-				dispatch(actions.setCompetence(name, value, modif))
+			upCompetence: (item, speciality) => {
+				dispatch(actions.upCompetence(item, speciality))
+			},
+			downCompetence: (item, speciality) => {
+				dispatch(actions.downCompetence(item, speciality))
+			},
+			updateSpeciality: (item, speciality) => {
+				dispatch(actions.updateCompetenceSpeciality(item, speciality))
 			}
 		}
 	}
 )(Competence)
+
+class Trait extends React.Component {
+	createCompetence(item) {
+		return(
+			<CompetenceContainer key={item.get('name')} item={item}/>
+		)
+	}
+
+	render() {
+		return(
+			<div className="competences">
+				<h1>{this.props.item.get('name')}</h1>
+				{this.props.item.get('subsection').map(this.createCompetence)}
+			</div>
+		)
+	}
+}
 
 class Competences extends React.Component {
 	constructor(props) {
@@ -110,6 +139,12 @@ class Competences extends React.Component {
 			validate: false,
 			error: ''
 		}
+	}
+
+	createTrait(item) {
+		return(
+			<Trait key={item.get('name')} item={item}/>
+		)
 	}
 
 	render() {
@@ -125,95 +160,7 @@ class Competences extends React.Component {
 					Points restants: {this.props.profil.get('points')}
 				</div>
 				<div className='traits'>
-					<div className='competences'>
-						<h1>Perception</h1>
-						<CompetenceContainer name='artillerie'/>
-						<CompetenceContainer name='arts'/>
-						<CompetenceContainer name='detecter'/>
-						<CompetenceContainer name='pister'/>
-						<CompetenceContainer name='scruter'/>
-						<CompetenceContainer name='autre_per'/>
-					</div>
-					<div className='competences'>
-						<h1>Connaissance</h1>
-						<CompetenceContainer name='carriere'/>
-						<CompetenceContainer name='territoires'/>
-						<CompetenceContainer name='region' text="region d'origine"/>
-						<CompetenceContainer name='deguisement'/>
-						<CompetenceContainer name='explosif'/>
-						<CompetenceContainer name='langues'/>
-						<CompetenceContainer name='natale'/>
-						<CompetenceContainer name='medecine'/>
-						<CompetenceContainer name='metier'/>
-						<CompetenceContainer name='science'/>
-						<CompetenceContainer name='universalis'/>
-						<CompetenceContainer name='autre_con'/>
-					</div>
-					<div className='competences'>
-						<h1>Charisme</h1>
-						<CompetenceContainer name='autorite'/>
-						<CompetenceContainer name='dressage'/>
-						<CompetenceContainer name='eloquence'/>
-						<CompetenceContainer name='intimider'/>
-						<CompetenceContainer name='persuasion'/>
-						<CompetenceContainer name='spectacle'/>
-						<CompetenceContainer name='autre_cha'/>
-					</div>
-					<div className='competences'>
-						<h1>Astuce</h1>
-						<CompetenceContainer name='bidouiller'/>
-						<CompetenceContainer name='bluff'/>
-						<CompetenceContainer name='rue'/>
-						<CompetenceContainer name='denicher'/>
-						<CompetenceContainer name='jeux'/>
-						<CompetenceContainer name='ridiculiser'/>
-						<CompetenceContainer name='survie'/>
-						<CompetenceContainer name='autre_ast'/>
-					</div>
-					<div className='competences'>
-						<h1>Ame</h1>
-						<CompetenceContainer name='foi'/>
-						<CompetenceContainer name='tripes'/>
-						<CompetenceContainer name='autre_ame'/>
-					</div>
-					<div className='competences'>
-						<h1>Dexterite</h1>
-						<CompetenceContainer name='arc'/>
-						<CompetenceContainer name='crocheter'/>
-						<CompetenceContainer name='derober'/>
-						<CompetenceContainer name='lancer'/>
-						<CompetenceContainer name='passe'/>
-						<CompetenceContainer name='recharger'/>
-						<CompetenceContainer name='tirer1'/>
-						<CompetenceContainer name='tirer2'/>
-						<CompetenceContainer name='ventiler'/>
-						<CompetenceContainer name='autre_dex'/>
-					</div>
-					<div className='competences'>
-						<h1>Agilite</h1>
-						<CompetenceContainer name='attelage'/>
-						<CompetenceContainer name='combat'/>
-						<CompetenceContainer name='conduire'/>
-						<CompetenceContainer name='equitation'/>
-						<CompetenceContainer name='esquiver'/>
-						<CompetenceContainer name='furtivite'/>
-						<CompetenceContainer name='grimper'/>
-						<CompetenceContainer name='nager'/>
-						<CompetenceContainer name='autre_agi'/>
-					</div>
-					<div className='competences'>
-						<h1>Force</h1>
-						<CompetenceContainer name='autre_for'/>
-					</div>
-					<div className='competences'>
-						<h1>Rapidite</h1>
-						<CompetenceContainer name='degainer'/>
-						<CompetenceContainer name='autre_rap'/>
-					</div>
-					<div className='competences'>
-						<h1>Vigueur</h1>
-						<CompetenceContainer name='autre_vig'/>
-					</div>
+					{competencesDefinition.map(this.createTrait)}
 				</div>
  				<button onClick={(evt) => this._onValidate(evt)}>Valider</button>
 				<link href="/static/css/competences.css" rel="stylesheet" type="text/css" />
@@ -222,7 +169,7 @@ class Competences extends React.Component {
 	}
 
 	_onValidate(evt) {
-		if (this.props.profil.points == 0) {
+		if (this.props.profil.get('points') == 0) {
 			this.setState({validate: true, error: ''})
 		} else {
 			this.setState({validate: false, error: "Vous n'avez pas attribué tous vos points"})

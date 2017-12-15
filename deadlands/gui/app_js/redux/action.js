@@ -66,11 +66,29 @@ export function validAsset(competencePoints) {
 	}
 }
 
-export function setCompetence(name, value, modif) {
+export function upCompetence(item, speciality) {
 	return {
-		type: 'SET_COMPETENCE',
+		type: 'UP_COMPETENCE',
 		name: name,
-		value: value,
-		modif: modif
+		item: item,
+		speciality: speciality
+	}
+}
+
+export function downCompetence(item, speciality) {
+	return {
+		type: 'DOWN_COMPETENCE',
+		name: name,
+		item: item,
+		speciality: speciality
+	}
+}
+
+export function updateCompetenceSpeciality(item, speciality) {
+	return {
+		type: 'SPECIALITY_COMPETENCE',
+		name: name,
+		item: item,
+		speciality: speciality
 	}
 }

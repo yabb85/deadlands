@@ -34,7 +34,8 @@ export const profil = Map({
 		Map({name: 'natale', value: 2}),
 		Map({name: 'furtivite', value: 1}),
 		Map({name: 'grimper', value: 1})
-	])
+	]),
+	points: 10
 })
 
 export const assets = List([
@@ -102,64 +103,114 @@ export const assets = List([
 	Map({name: "Veinard", definition: "Un gars avec une chance pareille peut voir une balle se loger dans la montre de poche qu'il a achetée quelques heures auparavant. c'est comme ça que sa marche pour ces gars là. Chaque fois que tu dépenses une Pépite bleue ou rouge pour un jet, tu peux relancer tous les 1.", value: [3], type: "asset"})
 ])
 
-export const competences = List([
-	Map({name: 'artillerie', text: 'artillerie', min: 0}),
-	Map({name: 'arts', text: 'arts', min: 0, spe: ['peinture', 'sculpture', 'dessin']}),
-	Map({name: 'detecter', text: 'detecter (1)', min: 1}),
-	Map({name: 'pister', text: 'pister', min: 0}),
-	Map({name: 'scruter', text: 'scruter', min: 0}),
-	Map({name: 'autre_per', text: 'autre', min: 0, spe: []}),
-	Map({name: 'carriere', text: 'carriere', min: 0}),
-	Map({name: 'territoires', text: 'conn. des territoires', min: 0}),
-	Map({name: 'region', text: "region d'origine (2)", min: 2}),
-	Map({name: 'deguisement', text: 'deguisement', min: 0}),
-	Map({name: 'explosif', text: 'explosif', min: 0}),
-	Map({name: 'langues', text: 'langues', min: 0, spe: ['Apache', 'Français', 'Gaëlique', 'Allemand', 'Latin', 'Langage des signe indiens', 'Sioux', 'Espagnol', 'Autre']}),
-	Map({name: 'natale', text: 'langue natal (2)', min: 2}),
-	Map({name: 'medecine', text: 'medecine', min: 0, spe: ['Générale', 'Chirurgie', 'Vétérinaire']}),
-	Map({name: 'metier', text: 'metier', min: 0}),
-	Map({name: 'science', text: 'science', min: 0, spe: ['Générale', 'Biologie', 'Chimie', 'Mécanique', 'Physique']}),
-	Map({name: 'universalis', text: 'universalis', min: 0, spe:['Philosophie', 'Histoire', 'Occultisme', 'Théologie', 'Autre']}),
-	Map({name: 'autre_con', text: 'autre', min: 0, spe: []}),
-	Map({name: 'autorite', text: 'autorite', min: 0}),
-	Map({name: 'dressage', text: 'dressage', min: 0, spe: ['Chien', 'Chevaux']}),
-	Map({name: 'eloquence', text: 'eloquence', min: 0}),
-	Map({name: 'intimider', text: 'intimider', min: 0}),
-	Map({name: 'persuasion', text: 'persuasion', min: 0}),
-	Map({name: 'spectacle', text: 'spectacle', min: 0, spe: ['Comedie', 'Chant', 'Danse', 'Autre']}),
-	Map({name: 'autre_cha', text: 'autre', min: 0, spe: []}),
-	Map({name: 'bidouiller', text: 'bidouiller', min: 0}),
-	Map({name: 'bluff', text: 'bluff', min: 0}),
-	Map({name: 'rue', text: 'conn. de la rue', min: 0}),
-	Map({name: 'denicher', text: 'denicher', min: 0}),
-	Map({name: 'jeux', text: 'jeux', min: 0}),
-	Map({name: 'ridiculiser', text: 'ridiculiser', min: 0}),
-	Map({name: 'survie', text: 'survie', min: 0, spe: ['Desert', 'Montagne', 'Autre']}),
-	Map({name: 'autre_ast', text: 'autre', min: 0, spe: []}),
-	Map({name: 'foi', text: 'foi', min: 0}),
-	Map({name: 'tripes', text: 'tripes', min: 0}),
-	Map({name: 'autre_ame', text: 'autre', min: 0, spe: []}),
-	Map({name: 'arc', text: 'arc', min: 0}),
-	Map({name: 'crocheter', text: 'crocheter', min: 0}),
-	Map({name: 'derober', text: 'derober', min: 0}),
-	Map({name: 'lancer', text: 'lancer', min: 0, spe: ['Haches', 'Couteaux', 'Lances']}),
-	Map({name: 'passe', text: 'passe passe', min: 0}),
-	Map({name: 'recharger', text: 'regarde rapide', min: 0}),
-	Map({name: 'tirer1', text: 'tirer', min: 0, spe:['Automatique', 'Lance-flamme', 'Pistolet', 'Fusil', 'Shotgun']}),
-	Map({name: 'tirer2', text: 'tirer', min: 0, spe:['Automatique', 'Lance-flamme', 'Pistolet', 'Fusil', 'Shotgun']}),
-	Map({name: 'ventiler', text: 'ventiler', min: 0}),
-	Map({name: 'autre_dex', text: 'autre', min: 0, spe: []}),
-	Map({name: 'attelage', text: 'attelage', min: 0}),
-	Map({name: 'combat', text: 'combat', min: 0, spe: ['Boxe', 'Bagarre', 'Escrime', 'Couteau', 'Lasso', 'Sabre', 'Fouet', 'Catch']}),
-	Map({name: 'conduire', text: 'conduire', min: 0, spe:['Bateau à vapeur', 'Ornithoptere', 'Wagon-Vapeur', 'Autre']}),
-	Map({name: 'equitation', text: 'equitation', min: 0}),
-	Map({name: 'esquiver', text: 'esquiver', min: 0}),
-	Map({name: 'furtivite', text: 'furtivite (1)', min: 1}),
-	Map({name: 'grimper', text: 'grimper (1)', min: 1}),
-	Map({name: 'nager', text: 'nager', min: 0}),
-	Map({name: 'autre_agi', text: 'autre', min: 0, spe: []}),
-	Map({name: 'autre_for', text: 'autre', min: 0, spe: []}),
-	Map({name: 'degainer', text: 'degainer', min: 0}),
-	Map({name: 'autre_rap', text: 'autre', min: 0, spe: []}),
-	Map({name: 'autre_vig', text: 'autre', min: 0, spe: []}),
+export const competencesDefinition = List([
+	Map({
+		name: 'perception',
+		subsection: List([
+			Map({name: 'artillerie', text: 'artillerie', min: 0}),
+			Map({name: 'arts', text: 'arts', min: 0, spe: ['peinture', 'sculpture', 'dessin']}),
+			Map({name: 'detecter', text: 'detecter (1)', min: 1}),
+			Map({name: 'pister', text: 'pister', min: 0}),
+			Map({name: 'scruter', text: 'scruter', min: 0}),
+			Map({name: 'autre_per', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'connaissance',
+		subsection: List([
+			Map({name: 'carriere', text: 'carriere', min: 0}),
+			Map({name: 'territoires', text: 'conn. des territoires', min: 0}),
+			Map({name: 'region', text: "region d'origine (2)", min: 2}),
+			Map({name: 'deguisement', text: 'deguisement', min: 0}),
+			Map({name: 'explosif', text: 'explosif', min: 0}),
+			Map({name: 'langues', text: 'langues', min: 0, spe: ['Apache', 'Français', 'Gaëlique', 'Allemand', 'Latin', 'Langage des signe indiens', 'Sioux', 'Espagnol', 'Autre']}),
+			Map({name: 'natale', text: 'langue natal (2)', min: 2}),
+			Map({name: 'medecine', text: 'medecine', min: 0, spe: ['Générale', 'Chirurgie', 'Vétérinaire']}),
+			Map({name: 'metier', text: 'metier', min: 0}),
+			Map({name: 'science', text: 'science', min: 0, spe: ['Générale', 'Biologie', 'Chimie', 'Mécanique', 'Physique']}),
+			Map({name: 'universalis', text: 'universalis', min: 0, spe:['Philosophie', 'Histoire', 'Occultisme', 'Théologie', 'Autre']}),
+			Map({name: 'autre_con', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'charisme',
+		subsection: List([
+			Map({name: 'autorite', text: 'autorite', min: 0}),
+			Map({name: 'dressage', text: 'dressage', min: 0, spe: ['Chien', 'Chevaux']}),
+			Map({name: 'eloquence', text: 'eloquence', min: 0}),
+			Map({name: 'intimider', text: 'intimider', min: 0}),
+			Map({name: 'persuasion', text: 'persuasion', min: 0}),
+			Map({name: 'spectacle', text: 'spectacle', min: 0, spe: ['Comedie', 'Chant', 'Danse', 'Autre']}),
+			Map({name: 'autre_cha', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'astuce',
+		subsection: List([
+			Map({name: 'bidouiller', text: 'bidouiller', min: 0}),
+			Map({name: 'bluff', text: 'bluff', min: 0}),
+			Map({name: 'rue', text: 'conn. de la rue', min: 0}),
+			Map({name: 'denicher', text: 'denicher', min: 0}),
+			Map({name: 'jeux', text: 'jeux', min: 0}),
+			Map({name: 'ridiculiser', text: 'ridiculiser', min: 0}),
+			Map({name: 'survie', text: 'survie', min: 0, spe: ['Desert', 'Montagne', 'Autre']}),
+			Map({name: 'autre_ast', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'ame',
+		subsection: List([
+			Map({name: 'foi', text: 'foi', min: 0}),
+			Map({name: 'tripes', text: 'tripes', min: 0}),
+			Map({name: 'autre_ame', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'dexterite',
+		subsection: List([
+			Map({name: 'arc', text: 'arc', min: 0}),
+			Map({name: 'crocheter', text: 'crocheter', min: 0}),
+			Map({name: 'derober', text: 'derober', min: 0}),
+			Map({name: 'lancer', text: 'lancer', min: 0, spe: ['Haches', 'Couteaux', 'Lances']}),
+			Map({name: 'passe', text: 'passe passe', min: 0}),
+			Map({name: 'recharger', text: 'regarde rapide', min: 0}),
+			Map({name: 'tirer1', text: 'tirer', min: 0, spe:['Automatique', 'Lance-flamme', 'Pistolet', 'Fusil', 'Shotgun']}),
+			Map({name: 'tirer2', text: 'tirer', min: 0, spe:['Automatique', 'Lance-flamme', 'Pistolet', 'Fusil', 'Shotgun']}),
+			Map({name: 'ventiler', text: 'ventiler', min: 0}),
+			Map({name: 'autre_dex', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'agilite',
+		subsection: List([
+			Map({name: 'attelage', text: 'attelage', min: 0}),
+			Map({name: 'combat', text: 'combat', min: 0, spe: ['Boxe', 'Bagarre', 'Escrime', 'Couteau', 'Lasso', 'Sabre', 'Fouet', 'Catch']}),
+			Map({name: 'conduire', text: 'conduire', min: 0, spe:['Bateau à vapeur', 'Ornithoptere', 'Wagon-Vapeur', 'Autre']}),
+			Map({name: 'equitation', text: 'equitation', min: 0}),
+			Map({name: 'esquiver', text: 'esquiver', min: 0}),
+			Map({name: 'furtivite', text: 'furtivite (1)', min: 1}),
+			Map({name: 'grimper', text: 'grimper (1)', min: 1}),
+			Map({name: 'nager', text: 'nager', min: 0}),
+			Map({name: 'autre_agi', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'force',
+		subsection: List([
+			Map({name: 'autre_for', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'rapidite',
+		subsection: List([
+			Map({name: 'degainer', text: 'degainer', min: 0}),
+			Map({name: 'autre_rap', text: 'autre', min: 0, spe: []})
+		])
+	}),
+	Map({
+		name: 'vigueur',
+		subsection: List([
+			Map({name: 'autre_vig', text: 'autre', min: 0, spe: []})
+		])
+	})
 ])

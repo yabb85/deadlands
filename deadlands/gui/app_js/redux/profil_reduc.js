@@ -29,19 +29,67 @@ export default function profil_reduc(state = profil, action) {
 			return state.set('assets', newAssets)
 		case 'VALID_ASSET':
 			return state.set('points', action.points)
-		case 'SET_COMPETENCE':
+		case 'UP_COMPETENCE':
+			if (state.get('points') <= 0) {
+				return state
+			}
+			let up_found = false
+			let up_updated = false
 			var newCompetences = state.get('competences').map(item => {
-				if (item.get('name') == action.name) {
-					return item.set('value', action.value)
+				let value = item.get('value')
+				if (item.get('name') == action.item.get('name')) {
+					up_found = true
+					if (action.speciality) {
+						item = item.set('speciality', action.speciality)
+					}
+					if (value < 5) {
+						up_updated = true
+						return item.set('value', value + 1)
+					} else {
+						return item
+					}
 				} else {
 					return item
 				}
 			})
-			if(newCompetences.equals(state.get('competences'))) {
-				newCompetences = newCompetences.push(Map({name: action.name, value: action.value}))
+			if(!up_found) {
+				let newItem = Map({name: action.item.get('name'), value: 1})
+				if (action.speciality) {
+					newItem = newItem.set('speciality', action.speciality)
+				}
+				newCompetences = newCompetences.push(newItem)
+				up_updated = true
 			}
-			var newPoints = state.set('points', state.get('points') + action.modif)
+			var newPoints = state
+			if (up_updated) {
+				newPoints = state.set('points', state.get('points') - 1)
+			}
 			return newPoints.set('competences', newCompetences)
+		case 'DOWN_COMPETENCE':
+			let down_updated = false
+			var newCompetences = state.get('competences').map(item => {
+				let value = item.get('value')
+				if (item.get('name') == action.item.get('name') && value > action.item.get('min')) {
+					down_updated = true
+					return item.set('value', value - 1)
+				} else {
+					return item
+				}
+			})
+			var newPoints = state
+			if (down_updated) {
+				newPoints = state.set('points', state.get('points') + 1)
+			}
+			return newPoints.set('competences', newCompetences)
+		case 'SPECIALITY_COMPETENCE':
+			var newCompetences = state.get('competences').map(item => {
+				if (item.get('name') == action.item.get('name')) {
+					return item.set('speciality', action.speciality)
+				} else {
+					return item
+				}
+			})
+			return state.set('competences', newCompetences)
 		default:
 			return state
 	}
