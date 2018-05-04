@@ -47,7 +47,7 @@ export default connect(
 					.then(function(response) {
 						return response.json()
 					})
-					.then(async function(data) {
+					.then(function(data) {
 						dispatch(actions.distributeCards(data))
 					});
 			},
