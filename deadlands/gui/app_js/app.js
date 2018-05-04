@@ -17,7 +17,8 @@ const reducers = {
 
 const reduc = combineReducers(reducers)
 const store = createStore(
-	reduc
+	reduc,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 ReactDOM.render(
