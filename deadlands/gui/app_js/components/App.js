@@ -5,6 +5,7 @@ import Tirage from './Tirage'
 import Caracteristics from './Caracteristics'
 import Assets from './Assets'
 import Competences from './Competences'
+import Sheet from './Sheet'
 
 class App extends React.Component {
 	render() {
@@ -19,6 +20,7 @@ class App extends React.Component {
 					<Route path='/caracteristics' component={Caracteristics} />
 					<Route path='/assets' component={Assets} />
 					<Route path='/competences' component={Competences} />
+					<Route path='/sheet' component={Sheet} />
 				</div>
 			</BrowserRouter>
 		);
