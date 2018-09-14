@@ -1,0 +1,133 @@
+.sheet {
+	background: url('../img/sheet.jpg');
+	background-size: cover;
+	/*text-align: center;*/
+	width: 1140px;
+	margin: 20px auto 20px auto;
+	padding: 50px 20px;
+	height: 1565px;
+	display: block;
+	position: relative;
+}
+
+#name {
+	position: absolute;
+	width: 250px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 20px;
+	left: 125px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#occupation {
+	position: absolute;
+	width: 250px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 20px;
+	right: 77px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#perception {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 267px;
+	left: 182px;
+}
+
+#connaissance {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 485px;
+	left: 185px;
+}
+
+#charisme {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 1008px;
+	left: 185px;
+}
+
+#astuce {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 1228px;
+	left: 182px;
+}
+
+#ame {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 1489px;
+	left: 182px;
+}
+
+#dexterite {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 267px;
+	left: 518px;
+}
+
+#agilite {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 737px;
+	left: 523px;
+}
+
+#force {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 267px;
+	right: 292px;
+}
+
+#rapidite {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 342px;
+	right: 292px;
+}
+
+#vigueur {
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	top: 485px;
+	right: 290px;
+}

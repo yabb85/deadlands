@@ -149,7 +149,7 @@ class Competences extends React.Component {
 
 	render() {
 		if (this.state.validate) {
-			return(<Redirect push to="/"/>)
+			return(<Redirect push to="/sheet"/>)
 		}
 		return(
 			<div className="container">
