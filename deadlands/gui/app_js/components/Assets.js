@@ -5,6 +5,7 @@ import Immutable, { Map } from 'immutable'
 import { Redirect } from 'react-router-dom'
 
 class InputChoice extends React.Component {
+	// display the definition and value of selected asset or handicap
 	constructor(props) {
 		super(props)
 		let selected = props.item.get('name') + '0'
@@ -29,6 +30,7 @@ class InputChoice extends React.Component {
 	}
 
 	createPoints(valuePoint) {
+		// set value selected for current asset or handicap
 		return(
 			<div key={'choice_' + valuePoint} className='choice'>
 				<input id={this.props.item.get('name') + valuePoint} type='radio' name={this.props.item.get('name') + 'points'} value={valuePoint} checked={this.state.selected == this.props.item.get('name') + valuePoint} onChange={evt => this._onSetAsset(evt)}/>
@@ -103,6 +105,7 @@ var ProfilAssetsContainer = connect(
 )(ProfilAssets)
 
 class Assets extends React.Component {
+	// display page with asset and handicaps
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -111,7 +114,8 @@ class Assets extends React.Component {
 			counter: 0,
 			counterAssets: 0,
 			counterHandicaps: 0,
-			error: ''
+			error: '',
+			displayed: false
 		}
 		this._onSelectOption = this._onSelectOption.bind(this)
 		this._onSelectTab = this._onSelectTab.bind(this)
@@ -148,7 +152,8 @@ class Assets extends React.Component {
 	}
 
 	render() {
-		if (this.props.profil.get('points') && this.props.profil.get('points') > 0) {
+		if (this.props.profil.get('points') && this.props.profil.get('points') > 0 && this.state.displayed == true) {
+			console.log(this.state.displayed)
 			return(<Redirect push to="/competences"/>)
 		}
 		return(
@@ -238,12 +243,15 @@ class Assets extends React.Component {
 	}
 
 	_onValidate(evt) {
+		console.log("valide le resultat")
 		if (this.state.counterAssets < 11 && this.state.counterHandicaps < 11) {
+			console.log("condition respecté")
 			let astuce = parseInt(this.props.profil.get('astuce').get('dice').replace('d', ''))
 			let perception = parseInt(this.props.profil.get('perception').get('dice').replace('d', ''))
 			let connaissance = parseInt(this.props.profil.get('connaissance').get('dice').replace('d', ''))
 			var competencePoints = astuce + perception + connaissance + this.state.counterHandicaps - this.state.counterAssets
 			this.props.validate(competencePoints)
+			this.setState({displayed: true})
 		}
 	}
 }
