@@ -10,6 +10,16 @@
 	position: relative;
 }
 
+.caracterisitque {
+}
+
+.competence {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+
 #name {
 	position: absolute;
 	width: 250px;
@@ -42,6 +52,48 @@
 	left: 182px;
 }
 
+#artillerie {
+	position: absolute;
+	top: 304px;
+	left: 400px;
+}
+
+#arts {
+	position: absolute;
+	top: 330px;
+	left: 400px;
+}
+
+#detecter {
+	position: absolute;
+	top: 355px;
+	left: 400px;
+}
+
+#pister {
+	position: absolute;
+	top: 380px;
+	left: 400px;
+}
+
+#orientation {
+	position: absolute;
+	top: 402px;
+	left: 400px;
+}
+
+#scruter {
+	position: absolute;
+	top: 424px;
+	left: 400px;
+}
+
+#perc_other {
+	position: absolute;
+	top: 450px;
+	left: 400px;
+}
+
 #connaissance {
 	position: absolute;
 	width: 40px;
@@ -50,6 +102,101 @@
 	text-align: center;
 	top: 485px;
 	left: 185px;
+}
+
+#carriere {
+	position: absolute;
+	top: 521px;
+	left: 400px;
+}
+
+#con_terr {
+	position: absolute;
+	top: 572px;
+	left: 400px;
+}
+
+#deguisement {
+	position: absolute;
+	top: 598px;
+	left: 400px;
+}
+
+#explosif {
+	position: absolute;
+	top: 623px;
+	left: 400px;
+}
+
+#lang_mat {
+	position: absolute;
+	top: 648px;
+	left: 400px;
+}
+
+#langues {
+	position: absolute;
+	top: 674px;
+	left: 400px;
+}
+
+#langues1 {
+	position: absolute;
+	top: 700px;
+	left: 400px;
+}
+
+#langues2 {
+	position: absolute;
+	top: 725px;
+	left: 400px;
+}
+
+#langues3 {
+	position: absolute;
+	top: 747px;
+	left: 400px;
+}
+
+#medecine1 {
+	position: absolute;
+	top: 797px;
+	left: 400px;
+}
+#medecine2 {
+	position: absolute;
+	top: 819px;
+	left: 400px;
+}
+
+#metier {
+	position: absolute;
+	top: 848px;
+	left: 400px;
+}
+
+#science1 {
+	position: absolute;
+	top: 898px;
+	left: 400px;
+}
+
+#science2 {
+	position: absolute;
+	top: 920px;
+	left: 400px;
+}
+
+#universalis {
+	position: absolute;
+	top: 947px;
+	left: 400px;
+}
+
+#con_other {
+	position: absolute;
+	top: 973px;
+	left: 400px;
 }
 
 #charisme {
@@ -62,6 +209,42 @@
 	left: 185px;
 }
 
+#autorite {
+	position: absolute;
+	top: 1045px;
+	left: 400px;
+}
+
+#dressage {
+	position: absolute;
+	top: 1070px;
+	left: 400px;
+}
+
+#eloquence {
+	position: absolute;
+	top: 1096px;
+	left: 400px;
+}
+
+#intimider {
+	position: absolute;
+	top: 1121px;
+	left: 400px;
+}
+
+#persuation {
+	position: absolute;
+	top: 1146px;
+	left: 400px;
+}
+
+#spectacle {
+	position: absolute;
+	top: 1195px;
+	left: 400px;
+}
+
 #astuce {
 	position: absolute;
 	width: 40px;
@@ -70,6 +253,54 @@
 	text-align: center;
 	top: 1228px;
 	left: 182px;
+}
+
+#bidouiller {
+	position: absolute;
+	top: 1264px;
+	left: 400px;
+}
+
+#bluff {
+	position: absolute;
+	top: 1289px;
+	left: 400px;
+}
+
+#rue {
+	position: absolute;
+	top: 1314px;
+	left: 400px;
+}
+
+#denicher {
+	position: absolute;
+	top: 1339px;
+	left: 400px;
+}
+
+#jeux {
+	position: absolute;
+	top: 1364px;
+	left: 400px;
+}
+
+#ridiculiser {
+	position: absolute;
+	top: 1390px;
+	left: 400px;
+}
+
+#survie {
+	position: absolute;
+	top: 1438px;
+	left: 400px;
+}
+
+#astuce_other1 {
+	position: absolute;
+	top: 1460px;
+	left: 400px;
 }
 
 #ame {
@@ -82,6 +313,18 @@
 	left: 182px;
 }
 
+#foi {
+	position: absolute;
+	top: 1516px;
+	left: 400px;
+}
+
+#tripes {
+	position: absolute;
+	top: 1541px;
+	left: 400px;
+}
+
 #dexterite {
 	position: absolute;
 	width: 40px;
@@ -90,6 +333,84 @@
 	text-align: center;
 	top: 267px;
 	left: 518px;
+}
+
+#arc {
+	position: absolute;
+	top: 304px;
+	left: 735px;
+}
+
+#crocheter {
+	position: absolute;
+	top: 328px;
+	left: 735px;
+}
+
+#derober {
+	position: absolute;
+	top: 354px;
+	left: 735px;
+}
+
+#lancer1 {
+	position: absolute;
+	top: 402px;
+	left: 735px;
+}
+
+#lancer2 {
+	position: absolute;
+	top: 427px;
+	left: 735px;
+}
+
+#passe {
+	position: absolute;
+	top: 458px;
+	left: 735px;
+}
+
+#recharge1 {
+	position: absolute;
+	top: 509px;
+	left: 735px;
+}
+
+#recharge2 {
+	position: absolute;
+	top: 537px;
+	left: 735px;
+}
+
+#tirer1 {
+	position: absolute;
+	top: 590px;
+	left: 735px;
+}
+
+#tirer2 {
+	position: absolute;
+	top: 615px;
+	left: 735px;
+}
+
+#tirer3 {
+	position: absolute;
+	top: 641px;
+	left: 735px;
+}
+
+#ventiler {
+	position: absolute;
+	top: 670px;
+	left: 735px;
+}
+
+#dex_other {
+	position: absolute;
+	top: 697px;
+	left: 735px;
 }
 
 #agilite {
@@ -102,6 +423,72 @@
 	left: 523px;
 }
 
+#attelage {
+	position: absolute;
+	top: 772px;
+	left: 735px;
+}
+
+#combat1 {
+	position: absolute;
+	top: 818px;
+	left: 735px;
+}
+
+#combat2 {
+	position: absolute;
+	top: 842px;
+	left: 735px;
+}
+
+#conduire1 {
+	position: absolute;
+	top: 894px;
+	left: 735px;
+}
+
+#conduire2 {
+	position: absolute;
+	top: 917px;
+	left: 735px;
+}
+
+#equitation {
+	position: absolute;
+	top: 947px;
+	left: 735px;
+}
+
+#esquiver {
+	position: absolute;
+	top: 972px;
+	left: 735px;
+}
+
+#furtivite {
+	position: absolute;
+	top: 998px;
+	left: 735px;
+}
+
+#grimper {
+	position: absolute;
+	top: 1023px;
+	left: 735px;
+}
+
+#nager {
+	position: absolute;
+	top: 1049px;
+	left: 735px;
+}
+
+#agi_other {
+	position: absolute;
+	top: 1074px;
+	left: 735px;
+}
+
 #force {
 	position: absolute;
 	width: 40px;
@@ -110,6 +497,12 @@
 	text-align: center;
 	top: 267px;
 	right: 292px;
+}
+
+#for_other {
+	position: absolute;
+	top: 301px;
+	right: 97px;
 }
 
 #rapidite {
@@ -122,6 +515,24 @@
 	right: 292px;
 }
 
+#degainer {
+	position: absolute;
+	top: 402px;
+	right: 97px;
+}
+
+#rap_other1 {
+	position: absolute;
+	top: 426px;
+	right: 97px;
+}
+
+#rap_other2 {
+	position: absolute;
+	top: 449px;
+	right: 97px;
+}
+
 #vigueur {
 	position: absolute;
 	width: 40px;
@@ -130,4 +541,29 @@
 	text-align: center;
 	top: 485px;
 	right: 290px;
+}
+
+#vig_other {
+	position: absolute;
+	top: 517px;
+	right: 97px;
+}
+
+#trempe {
+	position: absolute;
+	width: 40px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 30px;
+	text-align: center;
+	top: 1086px;
+	right: 97px;
+}
+
+#souffle {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background: url('../img/selecteur.png');
+	opacity: 0.5;
 }
