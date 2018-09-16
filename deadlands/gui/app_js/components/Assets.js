@@ -9,7 +9,7 @@ class InputChoice extends React.Component {
 	constructor(props) {
 		super(props)
 		let selected = props.item.get('name') + '0'
-		let element = props.profil.get('assets').find(item => this.findAsset(item))
+		let element = props.profil.get('assets').find(item => this.findAsset(item, props.item))
 		if (element) {
 			selected = element.get('name') + element.get('value')
 		}
@@ -20,7 +20,7 @@ class InputChoice extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		let selected = nextProps.item.get('name') + '0'
-		let element = nextProps.profil.get('assets').find(item => this.findAsset(item, nextProps))
+		let element = nextProps.profil.get('assets').find(item => this.findAsset(item, nextProps.item))
 		if (element) {
 			selected = element.get('name') + element.get('value')
 		}
@@ -39,10 +39,11 @@ class InputChoice extends React.Component {
 		)
 	}
 
-	findAsset(item, nextProps) {
-		if (item) {
-			return item.get('name') === nextProps.item.get('name')
+	findAsset(assetItem, selectedItem) {
+		if (assetItem && selectedItem) {
+			return assetItem.get('name') === selectedItem.get('name')
 		}
+		return false
 	}
 
 	render() {
@@ -108,17 +109,27 @@ class Assets extends React.Component {
 	// display page with asset and handicaps
 	constructor(props) {
 		super(props)
+		let counterHandicaps = 0
+		let counterAssets = 0
+		props.profil.get('assets').map(item => {
+			if (item.get('type') == 'handicap') {
+				counterHandicaps += parseInt(item.get('value'))
+			} else {
+				counterAssets += parseInt(item.get('value'))
+			}
+		})
 		this.state = {
 			selectedOption: Map(),
 			selected_tab: 'handi_tab',
-			counter: 0,
-			counterAssets: 0,
-			counterHandicaps: 0,
+			counter: counterHandicaps - counterAssets,
+			counterAssets: counterAssets,
+			counterHandicaps: counterHandicaps,
 			error: '',
 			displayed: false
 		}
 		this._onSelectOption = this._onSelectOption.bind(this)
 		this._onSelectTab = this._onSelectTab.bind(this)
+		this._onValidate = this._onValidate.bind(this)
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -143,6 +154,10 @@ class Assets extends React.Component {
 		this.setState(state)
 	}
 
+	componentDidMount() {
+		this.props.cleanCompetences();
+	}
+
 	createOption(item, filter) {
 		if (item.get('type') == filter) {
 			return(
@@ -152,8 +167,7 @@ class Assets extends React.Component {
 	}
 
 	render() {
-		if (this.props.profil.get('points') && this.props.profil.get('points') > 0 && this.state.displayed == true) {
-			console.log(this.state.displayed)
+		if (this.state.displayed == true) {
 			return(<Redirect push to="/competences"/>)
 		}
 		return(
@@ -243,9 +257,7 @@ class Assets extends React.Component {
 	}
 
 	_onValidate(evt) {
-		console.log("valide le resultat")
 		if (this.state.counterAssets < 11 && this.state.counterHandicaps < 11) {
-			console.log("condition respecté")
 			let astuce = parseInt(this.props.profil.get('astuce').get('dice').replace('d', ''))
 			let perception = parseInt(this.props.profil.get('perception').get('dice').replace('d', ''))
 			let connaissance = parseInt(this.props.profil.get('connaissance').get('dice').replace('d', ''))
@@ -267,6 +279,9 @@ export default connect(
 		return {
 			validate: (competencePoints) => {
 				dispatch(actions.validAsset(competencePoints))
+			},
+			cleanCompetences: () => {
+				dispatch(actions.cleanCompetences())
 			}
 		}
 	}

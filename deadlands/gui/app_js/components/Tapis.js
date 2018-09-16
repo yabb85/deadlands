@@ -10,6 +10,11 @@ class Tapis extends React.Component {
 		this._onDistribute = this._onDistribute.bind(this)
 	}
 
+	componentDidMount() {
+		this.props.activateAllCards()
+		this.props.cleanCaracteristics()
+	}
+
 	createCard(card) {
 		return(<Card key={card.get('color')+card.get('figure')} card={card} flip={this.props.toggleCard}>{card.get('coordination')}{card.get('dice')}</Card>)
 	}
@@ -56,6 +61,12 @@ export default connect(
 			},
 			toggleCard: (item) => {
 				dispatch(actions.flip(item))
+			},
+			activateAllCards: () => {
+				dispatch(actions.activateAllCards())
+			},
+			cleanCaracteristics: () => {
+				dispatch(actions.cleanCaracteristics())
 			}
 		}
 	}

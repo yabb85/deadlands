@@ -17,8 +17,8 @@ export default function card_reduc(state = cards, action) {
 			return state.map(item => {
 				if (item.get('color') == action.item.get('color') &&
 					item.get('figure') == action.item.get('figure')) {
-					let value = !item.get('selected')
-					return item.set('selected', value)
+					let value = !item.get('removed')
+					return item.set('removed', value)
 				} else {
 					return item
 				}
@@ -36,12 +36,14 @@ export default function card_reduc(state = cards, action) {
 			return state.map(item => {
 				if (item.get('color') == action.item.get('color') &&
 					item.get('figure') == action.item.get('figure')) {
-					console.log('item: ' + item)
-					console.log('action: ' + action.item)
 					return item.set('selected', true)
 				} else {
 					return item
 				}
+			})
+		case 'ACTIVATE_ALL_CARDS':
+			return state.map(item => {
+				return item.set('selected', true)
 			})
 		default:
 			return state

@@ -1,5 +1,5 @@
-import { profil } from './fixtures.js'
-import Immutable, { Map } from 'immutable'
+import { profil, competences } from './fixtures.js'
+import Immutable, { Map, List } from 'immutable'
 
 export default function profil_reduc(state = profil, action) {
 	switch (action.type) {
@@ -7,6 +7,18 @@ export default function profil_reduc(state = profil, action) {
 			return state.set('name', action.name)
 		case 'SET_CARACTERISTIC':
 			return state.set(action.carac_name, action.card)
+		case 'CLEAN_CARACTERITICS':
+			state = state.set('perception', null)
+			state = state.set('connaissance', null)
+			state = state.set('charisme', null)
+			state = state.set('astuce', null)
+			state = state.set('ame', null)
+			state = state.set('dexterite', null)
+			state = state.set('agilite', null)
+			state = state.set('force', null)
+			state = state.set('rapidite', null)
+			state = state.set('vigueur', null)
+			return state
 		case 'SET_ASSET':
 			var newAssets = state.get('assets').map(item => {
 				if (item.get('name') == action.name){
@@ -29,6 +41,8 @@ export default function profil_reduc(state = profil, action) {
 			return state.set('assets', newAssets)
 		case 'VALID_ASSET':
 			return state.set('points', action.points)
+		case 'CLEAN_ASSETS':
+			return state.set('assets', List([]))
 		case 'UP_COMPETENCE':
 			if (state.get('points') <= 0) {
 				return state
@@ -90,6 +104,8 @@ export default function profil_reduc(state = profil, action) {
 				}
 			})
 			return state.set('competences', newCompetences)
+		case 'CLEAN_COMPETENCES':
+			return state.set('competences', competences)
 		default:
 			return state
 	}

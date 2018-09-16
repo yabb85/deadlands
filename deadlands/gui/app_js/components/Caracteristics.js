@@ -43,6 +43,7 @@ class Caracteristics extends React.Component {
 	}
 
 	componentDidMount() {
+		this.props.cleanAssets();
 		document.onmousemove = this.handlerMM;
 	}
 
@@ -51,8 +52,8 @@ class Caracteristics extends React.Component {
 	}
 
 	createCard(element) {
-		if (element.get('selected')) {
-			return(<div key={element.get('color') + element.get('figure')} className={"dice " + element.get('dice')} style={{ filter: element.get('selected') ? 'opacity(100%)' : 'opacity(50%)' }} onClick={this._onSelect.bind(this, element)}>{element.get('coordination')}</div>)
+		if (!element.get('removed')) {
+			return(<div key={element.get('color') + element.get('figure')} className={"dice " + element.get('dice')} style={{ filter: element.get('selected') ? 'opacity(100%)' : 'opacity(40%)' }} onClick={this._onSelect.bind(this, element)}>{element.get('coordination')}</div>)
 		}
 	}
 
@@ -129,13 +130,15 @@ class Caracteristics extends React.Component {
 	}
 
 	_onSelect(payload) {
-		if (this.state.card) {
-			this.props.activateCard(this.state.card)
+		if(payload.get('selected')){
+			if (this.state.card) {
+				this.props.activateCard(this.state.card)
+			}
+			var state = {
+				card: payload
+			}
+			this.setState(state)
 		}
-		var state = {
-			card: payload
-		}
-		this.setState(state)
 	}
 
 	_onDeposit(evt) {
@@ -188,6 +191,9 @@ export default connect(
 			},
 			activateCard: (card) => {
 				dispatch(actions.activateCard(card))
+			},
+			cleanAssets: () => {
+				dispatch(actions.cleanAssets())
 			}
 		}
 	}

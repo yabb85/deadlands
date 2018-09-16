@@ -35,6 +35,12 @@ export function activateCard(item) {
 	}
 }
 
+export function activateAllCards() {
+	return {
+		type: 'ACTIVATE_ALL_CARDS'
+	}
+}
+
 export function setName(name) {
 	return {
 		type: 'SET_NAME',
@@ -47,6 +53,13 @@ export function setCaracteristic(carac_name, card) {
 		type: 'SET_CARACTERISTIC',
 		carac_name: carac_name,
 		card: card
+	}
+}
+
+
+export function cleanCaracteristics() {
+	return {
+		type: 'CLEAN_CARACTERITICS'
 	}
 }
 
@@ -63,6 +76,12 @@ export function validAsset(competencePoints) {
 	return {
 		type: 'VALID_ASSET',
 		points: competencePoints
+	}
+}
+
+export function cleanAssets() {
+	return {
+		type: 'CLEAN_ASSETS'
 	}
 }
 
@@ -90,5 +109,11 @@ export function updateCompetenceSpeciality(item, speciality) {
 		name: name,
 		item: item,
 		speciality: speciality
+	}
+}
+
+export function cleanCompetences() {
+	return {
+		type: 'CLEAN_COMPETENCES'
 	}
 }

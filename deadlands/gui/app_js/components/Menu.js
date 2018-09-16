@@ -1,7 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../redux/action'
 import { Link } from 'react-router-dom'
 
 class Menu extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+
+	componentDidMount() {
+		this.props.resetDistribution()
+		this.props.cleanCaracteristics()
+	}
+
 	render() {
 		return(
 			<div className="content">
@@ -17,5 +28,19 @@ class Menu extends React.Component {
 	}
 }
 
-export default Menu
+export default connect(
+	function mapStateToProps(state) {
+		return {}
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			resetDistribution: () => {
+				dispatch(actions.resetDistribution())
+			},
+			cleanCaracteristics: () => {
+				dispatch(actions.cleanCaracteristics())
+			}
+		}
+	}
+)(Menu)
 

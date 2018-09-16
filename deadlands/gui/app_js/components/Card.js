@@ -5,7 +5,7 @@ class Card extends React.Component {
 	constructor(props) {
 		super(props)
 		const { card, flip, children } = props
-		if (card.get('flip') != -1) {
+		if (card.get('flip') != -1 && !card.get('removed')) {
 			this.timer = setInterval(this._onFlip.bind(this), card.get('flip') * 1000)
 		}
 		this.state = {
@@ -17,6 +17,11 @@ class Card extends React.Component {
 		this.children = children
 	}
 
+	componentWillReceiveProps(nextProps) {
+		const { card, flip, children } = nextProps
+		this.card = card
+	}
+
 	render() {
 		let id_name = this.card.get('color') + "_" + this.card.get('figure')
 		return(
@@ -25,7 +30,7 @@ class Card extends React.Component {
 					<figure id={id_name} className="front"></figure>
 					<figure className="back"></figure>
 				</div>
-				<div className="display" style={{ textDecoration: this.card.get('selected') ? 'none' : 'line-through'}}>
+				<div className="display" style={{ textDecoration: this.card.get('removed') ? 'line-through' : 'none'}}>
 					{this.children}
 				</div>
 			</section>
